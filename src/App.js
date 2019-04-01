@@ -14,7 +14,6 @@ class App extends Component {
     this.setState({value: event.target.value});
   }
 
-
   printEnd = (path, value) => {
     if (value === null) {
       return '.body("' + path + '", equalTo(nullValue()))';
@@ -64,16 +63,6 @@ class App extends Component {
     }
   };
 
-  typeElement = (object) => {
-    if ( Array.isArray(object)) {
-      return "array";
-    } else if (object === null || object === undefined) {
-      return "null";
-    }else {
-      return typeof object;
-    }
-  };
-
   /**
    typeof undefined // "undefined"
    typeof 0 // "number"
@@ -84,6 +73,15 @@ class App extends Component {
    typeof null // "object"  (2)
    typeof alert // "function"  (3)
    */
+  typeElement = (object) => {
+    if ( Array.isArray(object)) {
+      return "array";
+    } else if (object === null || object === undefined) {
+      return "null";
+    }else {
+      return typeof object;
+    }
+  };
 
   render() {
     var list = null;
@@ -95,15 +93,15 @@ class App extends Component {
     } catch (e) {
       list = <div>not valid json</div>
     }
-
+//<button type="button" className="btn btn-outline-success" onClick={() => {navigator.clipboard.writeText(list)}}>Copy</button>
     return (
       <div className="App">
         <form>
           <label>
-            Name:
+            JSON Object:
             <input type="textarea" value={this.state.value} onChange={this.handleChange} />
+            <button type="button" className="btn btn-outline-success" onClick={() => this.setState({value: "{}"})}>Clean</button>
           </label>
-          <input type="submit" value="Submit" />
         </form>
 
         <div>{list}</div>
