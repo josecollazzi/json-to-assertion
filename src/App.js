@@ -16,7 +16,7 @@ class App extends Component {
 
   printEnd = (path, value) => {
     if (value === null) {
-      return '.body("' + path + '", equalTo(nullValue()))';
+      return '.body("' + path + '", nullValue())';
     }
 
     let preparedValue = value;
