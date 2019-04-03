@@ -1,6 +1,28 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# JSON to Assertion
 
-Demo [Json To Assertion](https://josecollazzi.github.io/json-to-assertion)
+This app transform a JSON response into a rest-assured assertion.
+E.g.
+You make a request with rest-assured and you know that the response should look like:
+```
+{"property": "value property"}
+```
+
+using the app the response will look like:
+
+```
+.body("property", equalTo("value property"))
+```
+
+this can be added directly to your test:
+
+```
+response
+    .then()
+    .assertThat()
+    .body("property", equalTo("value property"));
+```
+
+You can see the app working at [Json To Assertion](https://josecollazzi.github.io/json-to-assertion)
 
 ## Available Scripts
 
