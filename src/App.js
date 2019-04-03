@@ -53,9 +53,13 @@ class App extends Component {
         </div>)
   };
 
+  printArraySizeAssertion = (path, value) => {
+    return <div>{'.body("' + path + '", hasSize(' + value.length + '))'}</div>;
+  };
+
   print = (path, value) => {
     if (this.typeElement(value) === "array") {
-      return this.printArray(path, value);
+      return <div>{this.printArraySizeAssertion(path, value)}{this.printArray(path, value)}</div>
     } else if (this.typeElement(value) === "object") {
       return this.printObject(path, value);
     } else {
